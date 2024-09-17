@@ -1,0 +1,26 @@
+{
+  "Cells": {
+    "A1": {
+      "StringForm": "2"
+    },
+    "A2": {
+      "StringForm": "2"
+    },
+    "A3": {
+      "StringForm": "3"
+    },
+    "A4": {
+      "StringForm": "4"
+    },
+    "B1": {
+      "StringForm": "=A1/A2"
+    },
+    "B2": {
+      "StringForm": "=A3/A4"
+    },
+    "C1": {
+      "StringForm": "=B1+B2"
+    }
+  },
+  "Version": "ps6"
+}

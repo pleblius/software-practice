@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:SS="clr-namespace:SS"
+             x:Class="SpreadsheetGUI.MainPage">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="New" Clicked="NewClicked" />
+            <MenuFlyoutItem Text="Open" Clicked="OpenClicked" />
+            <MenuFlyoutItem Text="Save" Clicked="SaveClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Save As" Clicked="SaveAsClicked"/>
+        </MenuBarItem>
+        <MenuBarItem Text="Edit">
+            <MenuFlyoutItem Text="Copy" Clicked="CopyClicked"/>
+            <MenuFlyoutItem Text="Cut" Clicked="CutClicked"/>
+            <MenuFlyoutItem Text="Paste" Clicked="PasteClicked"/>
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Undo" Clicked="UndoClicked"/>
+            <MenuFlyoutItem Text="Redo" Clicked="RedoClicked"/>
+        </MenuBarItem>
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="Selection" Clicked="SelectionHelpClicked"/>
+            <MenuFlyoutItem Text="Setting Contents" Clicked="SettingContentsHelpClicked"/>
+            <MenuFlyoutItem Text="New File" Clicked="NewFileHelpClicked"/>
+            <MenuFlyoutItem Text="Open File" Clicked="OpenFileHelpClicked"/>
+            <MenuFlyoutItem Text="Saving File" Clicked="SavingFileHelpClicked"/>
+            <MenuFlyoutItem Text="Undo/Redo" Clicked="UndoRedoHelpClicked" />
+            <MenuFlyoutItem Text="Cut/Copy/Paste" Clicked="CutCopyPasteHelpClicked"/>
+            <MenuFlyoutItem Text="Overwriting File" Clicked="OverwritingFileHelpClicked"/>
+            <MenuFlyoutItem Text="Dark Mode" Clicked="DarkModeHelpClicked"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Text="Name:" 
+               Grid.Column="1"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Label x:Name="CellName"
+               Text="   "
+               Grid.Column="2"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Label Text="Value:"
+               Grid.Column="3"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Border Stroke="#111111"
+                StrokeThickness="1"
+                Grid.Column="4"
+                Grid.ColumnSpan="3"
+                VerticalOptions="Center"
+                HorizontalOptions="StartAndExpand">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5,5,5,5" />
+            </Border.StrokeShape>
+            <Entry x:Name="CellValue"
+                   Text=""
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start" />
+        </Border>
+        <Label Text="Contents:"
+               Grid.Row="1"
+               Grid.ColumnSpan="3"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Border Stroke="#000000"
+            StrokeThickness="1"
+            Background="#EEEEEE"
+            Grid.Row="1"
+            Grid.Column="3"
+            Grid.ColumnSpan="6"
+            VerticalOptions="Center">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5,5,5,5" />
+            </Border.StrokeShape>
+            <Entry x:Name="CellContents" 
+                    Completed="UpdateContents"/>
+        </Border>
+        <SS:SSGrid x:Name="spreadsheetGrid" 
+                   Grid.Row="2"
+                   Grid.ColumnSpan="7"/>
+    </Grid>
+</ContentPage>
+
